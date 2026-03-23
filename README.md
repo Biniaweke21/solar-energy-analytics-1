@@ -7,12 +7,12 @@ An analytics engineering project to identify high-potential solar investment reg
 1. **Clone the repository:** 
    ```bash 
    git clone <your-repo-url> 
-   cd Solar-Strategy-Optimizer 
+   cd solar-energy-analytics-1 
    ``` 
  
 2. **Create a virtual environment:** 
    ```bash 
-   python -m venv senv 
+   python3.10 -m venv senv 
    ``` 
  
 3. **Activate the environment:** 
