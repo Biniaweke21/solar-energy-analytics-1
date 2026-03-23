@@ -1,0 +1,14 @@
+# Environments
+senv/
+venv/
+.env
+
+# Data and Notebooks
+data/*.csv
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Local IDE settings
+.vscode/
+.idea/
