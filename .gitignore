@@ -12,3 +12,4 @@ __pycache__/
 # Local IDE settings
 .vscode/
 .idea/
+data/benin_clean.csv
