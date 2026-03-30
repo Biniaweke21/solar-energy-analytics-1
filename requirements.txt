@@ -3,5 +3,7 @@ numpy
 matplotlib
 seaborn
 scipy
+plotly
 streamlit
 pytest
+windrose

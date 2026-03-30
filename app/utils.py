@@ -2,7 +2,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 from scipy.stats import kruskal
 
 # ── Constants ─────────────────────────────────────────────────────────────────
@@ -17,15 +16,7 @@ METRICS = ["GHI", "DNI", "DHI"]
 # ── Data Loading ──────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    benin        = pd.read_csv("data/benin_clean.csv")
-    togo         = pd.read_csv("data/togo_clean.csv")
-    sierra_leone = pd.read_csv("data/SierraLeone_clean.csv")
-
-    benin["Country"]        = "Benin"
-    togo["Country"]         = "Togo"
-    sierra_leone["Country"] = "Sierra Leone"
-
-    df = pd.concat([benin, togo, sierra_leone], ignore_index=True)
+    df = pd.read_csv("data/dashboard_data.csv")
     df = df[df["GHI"] > 0].reset_index(drop=True)
     return df
 
@@ -33,20 +24,20 @@ def load_data():
 def make_boxplot(df, metric):
     fig = px.box(
         df,
-        x              = "Country",
-        y              = metric,
-        color          = "Country",
+        x                  = "Country",
+        y                  = metric,
+        color              = "Country",
         color_discrete_map = COUNTRY_COLORS,
-        title          = f"{metric} Distribution by Country",
-        labels         = {metric: "W/m²"},
-        category_orders= {"Country": ["Benin", "Togo", "Sierra Leone"]}
+        title              = f"{metric} Distribution by Country",
+        labels             = {metric: "W/m²"},
+        category_orders    = {"Country": ["Benin", "Togo", "Sierra Leone"]}
     )
     fig.update_layout(
-        plot_bgcolor  = "white",
-        showlegend    = False,
-        title_font    = dict(size=16, family="Arial"),
-        yaxis         = dict(gridcolor="#eeeeee"),
-        xaxis_title   = ""
+        plot_bgcolor = "white",
+        showlegend   = False,
+        title_font   = dict(size=16, family="Arial"),
+        yaxis        = dict(gridcolor="#eeeeee"),
+        xaxis_title  = ""
     )
     return fig
 
@@ -110,3 +101,6 @@ def run_kruskal(df):
             "Significant" : "✅ Yes" if p_value < 0.05 else "❌ No"
         })
     return pd.DataFrame(results)
+
+
+
