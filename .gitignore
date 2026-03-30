@@ -8,6 +8,7 @@ data/*.csv
 .ipynb_checkpoints/
 __pycache__/
 *.pyc
+!data/dashboard_data.csv
 
 # Local IDE settings
 .vscode/
